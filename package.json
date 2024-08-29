@@ -1,0 +1,23 @@
+{
+  "name": "practica-curd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./public/css/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "express": "4.19.2",
+    "express-handlebars": "8.0.1",
+    "mongoose": "8.5.4",
+    "mongoose-paginate-v2": "1.8.3"
+  }
+}

@@ -1,0 +1,71 @@
+<section class="text-gray-600 body-font ">
+    <div class="flex justify-end container gap-4 my-12 mx-auto">
+        
+
+        <select class="w-36" name="" id="">
+            <option value="">category</option>
+        </select>
+        <select class="w-36" name="" id="">
+            <option value="">price</option>
+        </select>
+        <svg width="24px" height="24px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"
+            stroke="#fafafa">
+            <g id="SVGRepo_bgCarrier" stroke-width="0">
+                <rect x="-2.4" y="-2.4" width="28.80" height="28.80" rx="14.4" fill="#3b82f6" strokewidth="0"></rect>
+            </g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M4 7H20" stroke="#fafafa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M7 12L17 12" stroke="#fafafa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M11 17H13" stroke="#fafafa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+            </g>
+        </svg>
+    </div>
+
+    <div class="container px-5 pb-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+
+            {{#each products}}
+
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                <a class="block relative h-48 rounded overflow-hidden">
+                    <img alt="ecommerce" class="object-cover object-center w-full h-full block"
+                        src="https://dummyimage.com/428x268">
+                </a>
+                <div class="mt-4">
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{this.category}}</h3>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">{{this.title}}</h2>
+                    <p class="mt-1">${{this.price}}</p>
+                </div>
+                <div>
+                    <a class="text-blue-500" href="/products/details/{{this._id}}">
+                        Ver detalles</a>
+
+                </div>
+            </div>
+
+            {{/each}}
+
+        </div>
+    </div>
+
+</section>
+{{!-- paginacion --}}
+<section class="container w-full flex justify-center gap-24 m-auto">
+    {{#if hasPrevPage}}
+    <a class="bg-blue-500 text-md text-white px-4 py-2 rounded-md focus:outline-none hover:bg-indigo-600"
+        href={{this.prevLink}}>
+        Anterior</a>
+    {{/if}}
+    <p class="text-md px-4 py-2">{{currentPage}} de {{totalPage}}</p>
+
+    {{#if hasNextPage}}
+    <a class="bg-blue-500 text-md text-white px-4 py-2 rounded-md focus:outline-none hover:bg-indigo-600"
+        href={{this.nextLink}}>
+        Siguiente</a>
+    {{/if}}
+
+</section>

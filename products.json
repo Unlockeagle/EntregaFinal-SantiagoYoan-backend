@@ -1,0 +1,262 @@
+[
+    {
+        "title": "Smartwatch Deportivo",
+        "description": "Reloj inteligente con monitor de frecuencia cardíaca, GPS incorporado y resistencia al agua para actividades deportivas.",
+        "code": "SW-SPORT-2024",
+        "price": 129.99,
+        "status": true,
+        "stock": 200,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/smartwatch_front.jpg",
+            "https://example.com/smartwatch_side.jpg"
+        ]
+    },
+    {
+        "title": "Cámara de Seguridad WiFi",
+        "description": "Cámara de seguridad para el hogar con visión nocturna, detección de movimiento y acceso remoto a través de aplicación móvil.",
+        "code": "CAM-WIFI-2024",
+        "price": 59.99,
+        "status": true,
+        "stock": 300,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/camara_front.jpg",
+            "https://example.com/camara_side.jpg"
+        ]
+    },
+    {
+        "title": "Teclado Mecánico RGB",
+        "description": "Teclado mecánico con retroiluminación RGB personalizable y teclas de alta respuesta para gamers.",
+        "code": "TECLADO-RGB-2024",
+        "price": 89.99,
+        "status": true,
+        "stock": 120,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/teclado_front.jpg",
+            "https://example.com/teclado_side.jpg"
+        ]
+    },
+    {
+        "title": "Mouse Inalámbrico Ergonómico",
+        "description": "Mouse inalámbrico con diseño ergonómico, batería recargable y múltiples niveles de DPI ajustables.",
+        "code": "MOUSE-ERG-2024",
+        "price": 49.99,
+        "status": true,
+        "stock": 250,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/mouse_front.jpg",
+            "https://example.com/mouse_side.jpg"
+        ]
+    },
+    {
+        "title": "Altavoz Portátil Bluetooth",
+        "description": "Altavoz portátil resistente al agua con Bluetooth 5.0, sonido estéreo y batería de hasta 12 horas.",
+        "code": "ALTAVOZ-BT-2024",
+        "price": 69.99,
+        "status": true,
+        "stock": 180,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/altavoz_front.jpg",
+            "https://example.com/altavoz_side.jpg"
+        ]
+    },
+    {
+        "title": "Tablet 10 pulgadas",
+        "description": "Tablet con pantalla de 10 pulgadas, procesador de alto rendimiento y 64GB de almacenamiento interno.",
+        "code": "TABLET-10-2024",
+        "price": 199.99,
+        "status": true,
+        "stock": 90,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/tablet_front.jpg",
+            "https://example.com/tablet_side.jpg"
+        ]
+    },
+    {
+        "title": "Cargador Rápido USB-C",
+        "description": "Cargador rápido con tecnología USB-C, compatible con múltiples dispositivos y con protección contra sobrecargas.",
+        "code": "CARGADOR-USB-C-2024",
+        "price": 29.99,
+        "status": true,
+        "stock": 500,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/cargador_front.jpg",
+            "https://example.com/cargador_side.jpg"
+        ]
+    },
+    {
+        "title": "Monitor 4K UHD 27 pulgadas",
+        "description": "Monitor 4K UHD de 27 pulgadas con tecnología IPS y ajuste ergonómico para una experiencia de visualización superior.",
+        "code": "MONITOR-4K-2024",
+        "price": 349.99,
+        "status": true,
+        "stock": 60,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/monitor_front.jpg",
+            "https://example.com/monitor_side.jpg"
+        ]
+    },
+    {
+        "title": "Cámara Reflex Digital",
+        "description": "Cámara réflex digital con sensor de 24.2 MP, grabación de video en 4K y conectividad Wi-Fi integrada.",
+        "code": "CAM-REFLEX-2024",
+        "price": 599.99,
+        "status": true,
+        "stock": 45,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/reflex_front.jpg",
+            "https://example.com/reflex_side.jpg"
+        ]
+    },
+    {
+        "title": "Disco Duro Externo 1TB",
+        "description": "Disco duro externo de 1TB con conexión USB 3.0, diseño compacto y alta velocidad de transferencia.",
+        "code": "HDD-1TB-2024",
+        "price": 79.99,
+        "status": true,
+        "stock": 220,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/disco_front.jpg",
+            "https://example.com/disco_side.jpg"
+        ]
+    },
+    {
+        "title": "Router WiFi 6 Dual Band",
+        "description": "Router WiFi 6 de doble banda con alta velocidad, cobertura amplia y control parental avanzado.",
+        "code": "ROUTER-WIFI6-2024",
+        "price": 139.99,
+        "status": true,
+        "stock": 130,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/router_front.jpg",
+            "https://example.com/router_side.jpg"
+        ]
+    },
+    {
+        "title": "Lámpara LED Inteligente",
+        "description": "Lámpara LED inteligente con control por voz, ajuste de brillo y temperatura de color, compatible con Alexa y Google Home.",
+        "code": "LAM-LED-2024",
+        "price": 39.99,
+        "status": true,
+        "stock": 160,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/lampara_front.jpg",
+            "https://example.com/lampara_side.jpg"
+        ]
+    },
+    {
+        "title": "Auriculares de Diadema",
+        "description": "Auriculares de diadema con sonido Hi-Fi, almohadillas cómodas y micrófono integrado para llamadas claras.",
+        "code": "AUR-DIAD-2024",
+        "price": 69.99,
+        "status": true,
+        "stock": 140,
+        "category": "Electrónica",
+        "thumbnails": [
+            "https://example.com/aurdiadema_front.jpg",
+            "https://example.com/aurdiadema_side.jpg"
+        ]
+    },
+    {
+        "title": "Microondas Digital 20L",
+        "description": "Microondas digital con capacidad de 20L, funciones de descongelado y cocción rápida, y pantalla LED.",
+        "code": "MICRO-20L-2024",
+        "price": 109.99,
+        "status": true,
+        "stock": 110,
+        "category": "Electrodomésticos",
+        "thumbnails": [
+            "https://example.com/microondas_front.jpg",
+            "https://example.com/microondas_side.jpg"
+        ]
+    },
+    {
+        "title": "Cafetera de Cápsulas",
+        "description": "Cafetera de cápsulas con sistema de alta presión, compatible con varias marcas de café, y diseño compacto.",
+        "code": "CAFETERA-CAPS-2024",
+        "price": 89.99,
+        "status": true,
+        "stock": 170,
+        "category": "Electrodomésticos",
+        "thumbnails": [
+            "https://example.com/cafetera_front.jpg",
+            "https://example.com/cafetera_side.jpg"
+        ]
+    },
+    {
+        "title": "Freidora de Aire 3.5L",
+        "description": "Freidora de aire con capacidad de 3.5L, panel táctil y múltiples programas de cocción para comidas saludables.",
+        "code": "FREIDORA-AIRE-2024",
+        "price": 129.99,
+        "status": true,
+        "stock": 100,
+        "category": "Electrodomésticos",
+        "thumbnails": [
+            "https://example.com/freidora_front.jpg",
+            "https://example.com/freidora_side.jpg"
+        ]
+    },
+    {
+        "title": "Plancha de Vapor Vertical",
+        "description": "Plancha de vapor vertical con calentamiento rápido, función de autoapagado y tanque de agua extraíble.",
+        "code": "PLANCHA-VERT-2024",
+        "price": 49.99,
+        "status": true,
+        "stock": 130,
+        "category": "Electrodomésticos",
+        "thumbnails": [
+            "https://example.com/plancha_front.jpg",
+            "https://example.com/plancha_side.jpg"
+        ]
+    },
+    {
+        "title": "Licuadora de Alta Potencia",
+        "description": "Licuadora de alta potencia con cuchillas de acero inoxidable, 5 velocidades y vaso de 2L.",
+        "code": "LICUADORA-HP-2024",
+        "price": 79.99,
+        "status": true,
+        "stock": 90,
+        "category": "Electrodomésticos",
+        "thumbnails": [
+            "https://example.com/licuadora_front.jpg",
+            "https://example.com/licuadora_side.jpg"
+        ]
+    },
+    {
+        "title": "Aspiradora Robot",
+        "description": "Aspiradora robot con mapeo inteligente, control por aplicación y modos de limpieza automática.",
+        "code": "ASPIRADOR-ROBOT-2024",
+        "price": 249.99,
+        "status": true,
+        "stock": 80,
+        "category": "Electrodomésticos",
+        "thumbnails": [
+            "https://example.com/robot_front.jpg",
+            "https://example.com/robot_side.jpg"
+        ]
+    },
+    {
+        "title": "Purificador de Aire HEPA",
+        "description": "Purificador de aire con filtro HEPA, indicador de calidad del aire y modos de funcionamiento silencioso.",
+        "code": "PURIF-AIRE-2024",
+        "price": 149.99,
+        "status": true,
+        "stock": 70,
+        "category": "Electrodomésticos",
+        "thumbnails": [
+            "https://example.com/purificador_front.jpg",
+            "https://example.com/purificador_side.jpg"
+        ]
+    }
+]
