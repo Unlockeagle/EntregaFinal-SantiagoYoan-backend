@@ -34,39 +34,39 @@ class CartManager {
             throw new Error("Error al buscar carrito" + error.message);
         }
     }
-
-    async addProductToCart(cartId, prodId, quantity) {
+    // Add product to cart
+    async addProductToCart(cartId, prodId, quantity = 1) {
+        
         try {
             const cart = await this.getCartById(cartId);
-            const existsProduct = cart.products.find((item) => item.product.toString() === prodId);
-
+            const existsProduct = await cart.products.find((item) => item.product.toString() === prodId);
             if (existsProduct) {
                 existsProduct.quantity += quantity;
             } else {
-                cart.products.push({ product: prodId, quantity: quantity });
+                cart.products.push({ product: prodId, quantity });
             }
 
-            //marcamos la propiedad "products" modificada antes de guardar
+            //marcamos product como modificada
             cart.markModified("products");
             await cart.save();
-            console.log("product add to cart");
-
             return cart;
         } catch (error) {
-            throw new Error("error add to cart" + error.message);
+            throw new Error("Error al agregar producto al carrito" + error.message);
         }
     }
+
     // Delete Product
     async deleteProductFromCart(cartId, prodId) {
         try {
             // Encuentra el carrito por su ID
             const cart = await CartModel.findById(cartId);
+                        
             if (!cart) {
                 throw new Error("Carrito no encontrado");
             }
 
             const productIndex = cart.products.findIndex((product) => product._id.toString() === prodId);
-
+            
             if (productIndex === -1) {
                 throw new Error("Producto no encontrado en el carrito");
             }

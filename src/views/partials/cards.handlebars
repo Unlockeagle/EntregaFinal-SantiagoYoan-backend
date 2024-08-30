@@ -3,7 +3,9 @@
         
 
         <select class="w-36" name="" id="">
-            <option value="">category</option>
+            {{#each products}}
+            <option value="">{{this.category}}</option>
+            {{/each}}
         </select>
         <select class="w-36" name="" id="">
             <option value="">price</option>

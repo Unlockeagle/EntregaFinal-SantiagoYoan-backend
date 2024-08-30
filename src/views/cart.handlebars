@@ -1,9 +1,16 @@
-<section class="container flex m-auto justify-center">
+<section class="container flex flex-col m-auto justify-center">
 
-<h2 class="text-xl">Cart 🛒</h2>
-{{#each cart.products}}
-<p>{{this.title}}</p>
-{{/each}}
+    <h2 class="text-xl mb-4 text-center">Cart 🛒</h2>
+    <section>
 
+        {{#each plaicart.products}}
+        <div class="flex justify-around">
+
+        <h2>{{this.product}}</h2>
+        <p>{{this.quantity}}</p>
+        </div>
+        {{/each}}
+
+    </section>
 
 </section>

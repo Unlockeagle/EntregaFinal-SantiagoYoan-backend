@@ -72,23 +72,23 @@ router.get("/products/details/:id", async (req, res) => {
     }
 });
 
-// Ruta para obtener un carrito por su ID
-router.get('/api/carts/:id', async (req, res) => {
+//Ruta para obtener un carrito por su ID
+router.get('/carts/:id', async (req, res) => {
     const cartId = req.params.id;
     try {
         const cart = await cartManager.getCartById(cartId);
-        console.log(cart);
+        const plaicart = await cart.toObject()
         
         if (!cart) {
-            return res.render("cart", {cart})
+            return res.render("cart", {plaicart})
         }
-        res.render("cart", {cart})
+        res.render("cart", {plaicart})
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 // Ruta para añadir un producto a un carrito
-router.post("/api/carts/:id/products/:productId", async (req, res) => {
+router.post("/api/carts/:id/products/", async (req, res) => {
     const cartId = req.params.id;
     const productId = req.params.id;
     const quantity = req.body

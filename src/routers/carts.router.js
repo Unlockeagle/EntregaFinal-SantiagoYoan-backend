@@ -39,26 +39,22 @@ router.get("/api/carts/:id", async (req, res) => {
 });
 
 // Ruta para añadir un producto a un carrito
-router.post("/api/carts/:id/products", async (req, res) => {
-    const cartId = req.params.id;
-    const { productId } = req.body;
-    const { quantity } = req.body;
-
-    if (!productId || !quantity) {
-        return res.status(400).json({ message: "productId y quantity son requeridos" });
-    }
-
+router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
+    const cartId = req.params.cartId;
+    const prodId = req.params.productId
+    const quantity = parseInt(req.body.quantity, 10) || 1;
+      
     try {
-        const updatedCart = await manager.addProductToCart(cartId, productId, quantity);
-        res.status(200).json(updatedCart);
+        const addProduct = await manager.addProductToCart(cartId, prodId, quantity)
+        res.status(201).json({message: "Producto agregado", addProduct})
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 
-// Ruta para eliminar un producto de un carrito
-router.delete("/api/carts/:id/products/:productId", async (req, res) => {
-    const cartId = req.params.id;
+//Ruta para eliminar un producto de un carrito
+router.delete("/api/carts/:cartId/products/:productId", async (req, res) => {
+    const cartId = req.params.cartId;
     const productId = req.params.productId;
 
     try {
