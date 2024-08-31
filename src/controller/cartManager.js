@@ -14,7 +14,6 @@ class CartManager {
     async getCarts() {
         try {
             const carts = await CartModel.find();
-            console.log(carts);
 
             return carts;
         } catch (error) {
@@ -24,11 +23,14 @@ class CartManager {
 
     async getCartById(cartId) {
         try {
-            const cartByID = await CartModel.findById(cartId);
+            const cartByID = await CartModel.findById(cartId).populate("products.product").lean();
+            
+            
             if (!cartByID) {
                 console.log("No existe ese carrito");
                 return null;
             }
+            
             return cartByID;
         } catch (error) {
             throw new Error("Error al buscar carrito" + error.message);
@@ -36,19 +38,26 @@ class CartManager {
     }
     // Add product to cart
     async addProductToCart(cartId, prodId, quantity = 1) {
+       
         
         try {
-            const cart = await this.getCartById(cartId);
+            const cart = await CartModel.findById(cartId)
+          
             const existsProduct = await cart.products.find((item) => item.product.toString() === prodId);
+
             if (existsProduct) {
                 existsProduct.quantity += quantity;
+                
             } else {
-                cart.products.push({ product: prodId, quantity });
+                cart.products.push({ product: prodId, quantity: quantity.quantity });
             }
 
             //marcamos product como modificada
             cart.markModified("products");
+       
             await cart.save();
+
+            
             return cart;
         } catch (error) {
             throw new Error("Error al agregar producto al carrito" + error.message);

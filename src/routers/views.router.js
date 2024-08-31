@@ -4,7 +4,7 @@ import CartManager from "../controller/cartManager.js";
 
 const router = Router();
 const manager = new ProductManager();
-const cartManager = new CartManager()
+const cartManager = new CartManager();
 
 router.get("/products", async (req, res) => {
     try {
@@ -58,14 +58,13 @@ router.get("/products", async (req, res) => {
 router.get("/products/details/:id", async (req, res) => {
     try {
         const id = req.params.id;
-             
+
         const productById = await manager.getProductsById(id);
-        
+
         // Convertir cada producto a un objeto plano
-        const plainProductById = productById.toObject()
-        
-        
-        res.render("details", {plainProductById})
+        const plainProductById = productById.toObject();
+
+        res.render("details", { plainProductById });
     } catch (error) {
         console.error("Error en el router:", error);
         res.status(500).json({ status: "error", message: error.message });
@@ -73,36 +72,34 @@ router.get("/products/details/:id", async (req, res) => {
 });
 
 //Ruta para obtener un carrito por su ID
-router.get('/carts/:id', async (req, res) => {
+router.get("/carts/:id", async (req, res) => {
     const cartId = req.params.id;
     try {
         const cart = await cartManager.getCartById(cartId);
-        const plaicart = await cart.toObject()
-        
         if (!cart) {
-            return res.render("cart", {plaicart})
+            return res.render("cart", { cart });
         }
-        res.render("cart", {plaicart})
+        //const plainCart = await cart.toObject()
+
+        res.render("cart", { cart });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
+
 // Ruta para añadir un producto a un carrito
-router.post("/api/carts/:id/products/", async (req, res) => {
-    const cartId = req.params.id;
-    const productId = req.params.id;
-    const quantity = req.body
-
-    if (!productId || !quantity) {
-        return res.status(400).json({ message: "productId y quantity son requeridos" });
-    }
-
-    try {
-        const updatedCart = await cartManager.addProductToCart(cartId, productId, quantity);
-        res.status(200).json(updatedCart);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
+// router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
+//     const cartId = req.params.cartId;
+//     const prodId = req.params.productId
+//     const quantity = parseInt(req.body.quantity, 10) || 1;
+      
+//     try {
+//         const addProduct = await manager.addProductToCart(cartId, prodId, quantity)
+//         res.render("details" , {addProduct})
+        
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// });
 
 export default router;

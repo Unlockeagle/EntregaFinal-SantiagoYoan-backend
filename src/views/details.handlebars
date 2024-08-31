@@ -1,6 +1,6 @@
 <section class="text-gray-600 body-font overflow-hidden">
 
-    
+
     <div class="container px-5 py-24 mx-auto">
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
             <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
@@ -98,8 +98,10 @@
                     </div>
                 </div>
                 <div class="flex justify-between gap-4">
-                    <span class="title-font font-medium text-2xl text-gray-900">Price: ${{plainProductById.price}}</span>
-                    <span class="title-font font-medium text-2xl text-gray-900">Stock: {{plainProductById.stock}} pzas</span>
+                    <span class="title-font font-medium text-2xl text-gray-900">Price:
+                        ${{plainProductById.price}}</span>
+                    <span class="title-font font-medium text-2xl text-gray-900">Stock: {{plainProductById.stock}}
+                        pzas</span>
                     <button
                         class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                         <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -110,13 +112,39 @@
                         </svg>
                     </button>
                 </div>
-                    <div class="mt-4">
-                        <button
-                        class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-md">Add to cart</button>
-                    
-                    </div>
+                <div class="mt-4">
+                    <p id="productId">{{plainProductById._id}}</p>
+                    <button id="myButton"
+                        class="flex w-full ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-md">Add
+                        to cart</button>
+
+                </div>
             </div>
         </div>
     </div>
 
 </section>
+<script>
+    const addProdBtn = document.getElementById("myButton")
+    const productId = document.getElementById("productId").innerText
+    addProdBtn.addEventListener("click", function () {
+        console.log("click");
+
+        fetch(`http://localhost:8080/api/carts/66d0e5df784573eac40391c1/products/${productId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                quantity: 2
+            }) // Datos que envías al backend
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Success:", data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    });
+</script>
