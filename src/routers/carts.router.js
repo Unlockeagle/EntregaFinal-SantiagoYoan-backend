@@ -43,8 +43,10 @@ router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
     const cartId = req.params.cartId;
     const prodId = req.params.productId
     const quantity = parseInt(req.body.quantity, 10) || 1;
-
+    
+    
     try {
+
         const addProduct = await manager.addProductToCart(cartId, prodId, quantity)
         res.status(201).json({message: "Producto agregado", addProduct})
     } catch (error) {
@@ -53,19 +55,20 @@ router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
 });
 
 //Ruta para eliminar un producto de un carrito
-// router.delete("/api/carts/:cartId/products/:productId", async (req, res) => {
-//     const cartId = req.params.cartId;
-//     const productId = req.params.productId;
+router.delete("/api/carts/:cartId/products/:productId", async (req, res) => {
+    const cartId = req.params.cartId;
+    const productId = req.params.productId;
+    console.log(productId)
 
-//     try {
-//         const deletedProduct = await manager.deleteProductFromCart(cartId, productId);
-//         if (!deletedProduct) {
-//             return res.status(404).json({ message: "Producto no encontrado en el carrito" });
-//         }
-//         res.status(200).json({ message: "Producto eliminado", deletedProduct });
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// });
+    try {
+        const deletedProduct = await manager.deleteProductFromCart(cartId, productId);
+        if (!deletedProduct) {
+            return res.status(404).json({ message: "Producto no encontrado en el carrito" });
+        }
+        res.status(200).json({ message: "Producto eliminado", deletedProduct });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 export default router;

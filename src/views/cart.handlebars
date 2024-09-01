@@ -1,8 +1,6 @@
-
-
 <section class="container flex flex-col m-auto justify-center">
 
-  
+
     <section class="py-24 relative">
         <div class="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">
 
@@ -21,22 +19,24 @@
                 <div
                     class="flex items-center flex-col min-[550px]:flex-row gap-3 min-[550px]:gap-6 w-full max-xl:justify-center max-xl:max-w-xl max-xl:mx-auto">
                     <div class="img-box"><img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                        src="https://dummyimage.com/428x268"></div>
+                            src="https://dummyimage.com/428x268"></div>
                     <div class="pro-data w-full max-w-sm ">
                         <h5 class="font-semibold text-xl leading-8 text-black max-[550px]:text-center">
                             {{this.product.title}}
                         </h5>
+
                         <p
                             class="font-normal text-lg leading-8 text-gray-500 my-2 min-[550px]:my-3 max-[550px]:text-center">
                             {{this.product.category}}</p>
                         <h6 class="font-medium text-lg leading-8 text-indigo-600  max-[550px]:text-center">
                             ${{this.product.price}}</h6>
                     </div>
-                    
+
                 </div>
                 <div
                     class="flex items-center flex-col min-[550px]:flex-row w-full max-xl:max-w-xl max-xl:mx-auto gap-2">
-                    <h6 id="delivery" class="font-manrope font-bold text-2xl leading-9 text-black w-full max-w-[176px] text-center">
+                    <h6 id="delivery"
+                        class="font-manrope font-bold text-2xl leading-9 text-black w-full max-w-[176px] text-center">
                         $15.00 <span class="text-sm text-gray-300 ml-3 lg:hidden whitespace-nowrap">(Delivery
                             Charge)</span></h6>
                     <div class="flex items-center w-full mx-auto justify-center">
@@ -71,11 +71,35 @@
                     </div>
                     <h6 id="total"
                         class="text-indigo-600 font-manrope font-bold text-2xl leading-9 w-full max-w-[176px] text-center">
-                        $120.00</h6>
+                        $120.00
+                    </h6>
+                    <p class="hidden productIdDelete">{{this.product._id}}</p>
+                    <button class="deleteBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            fill="#000000" width="24px" height="24px" viewBox="0 0 512 512" id="_x30_1" version="1.1"
+                            xml:space="preserve">
+
+                            <g>
+
+                                <path
+                                    d="M298.656,187.5c-10.096,0-18.281,8.185-18.281,18.281v129.188c0,10.096,8.185,18.281,18.281,18.281   s18.281-8.185,18.281-18.281V205.781C316.938,195.685,308.753,187.5,298.656,187.5z" />
+
+                                <path
+                                    d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M365.688,163.125v202.312   c0,20.193-16.37,36.562-36.562,36.562h-146.25c-20.193,0-36.562-16.37-36.562-36.562V163.125   c-13.462,0-24.375-10.913-24.375-24.375s10.913-24.375,24.375-24.375h49.796c3.232,0,6.332-1.284,8.618-3.57l17.236-17.236   c2.286-2.285,5.385-3.57,8.618-3.57h50.841c3.232,0,6.332,1.284,8.618,3.57l17.236,17.236c2.286,2.286,5.385,3.57,8.618,3.57   h49.795c13.462,0,24.375,10.913,24.375,24.375S379.149,163.125,365.688,163.125z" />
+
+                                <path
+                                    d="M213.344,187.5c-10.096,0-18.281,8.185-18.281,18.281v129.188c0,10.096,8.185,18.281,18.281,18.281   s18.281-8.185,18.281-18.281V205.781C231.625,195.685,223.44,187.5,213.344,187.5z" />
+
+                            </g>
+
+                        </svg>
+
+                    </button>
                 </div>
             </div>
-            </div>
-            {{/each}}
+        {{/each}}
+        </div>
+
     </section>
 
 
@@ -83,4 +107,38 @@
 
 </section>
 
-<script src="/js/main.js"></script>
+<script>
+    const deleteBtn = document.querySelectorAll(".deleteBtn")
+    //const productId = document.getElementById("productIdDelete").innerText
+    deleteBtn.forEach((btn) => {
+  
+        btn.addEventListener("click", function () {
+            console.log("click");
+            const productId = this.parentElement.querySelector(".productIdDelete").innerText;
+            console.log("Clicked button for product ID:", productId);
+
+            // Aquí va tu código para realizar la petición fetch
+            fetch(`http://localhost:8080/api/carts/66d0e5df784573eac40391c1/products/${productId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: ""
+        })
+            .then(response => response.json())
+            .then(data => {
+               console.log("Success:", data);
+                alert("Deleted Product")
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+        
+        });
+    });
+
+
+
+        
+
+</script>
