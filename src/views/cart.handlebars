@@ -28,16 +28,21 @@
                         <p
                             class="font-normal text-lg leading-8 text-gray-500 my-2 min-[550px]:my-3 max-[550px]:text-center">
                             {{this.product.category}}</p>
-                        <h6 class="font-medium text-lg leading-8 text-indigo-600  max-[550px]:text-center">
-                            ${{this.product.price}}</h6>
+                            <div class="flex font-medium text-lg leading-8 text-indigo-600  max-[550px]:text-center">
+
+                            <span class="font-medium text-lg leading-8 text-indigo-600  max-[550px]:text-center">$</span>
+                        <h6 id="price" class="font-medium text-lg leading-8 text-indigo-600  max-[550px]:text-center">
+                            {{this.product.price}}</h6>
+                            </div>
                     </div>
 
                 </div>
                 <div
                     class="flex items-center flex-col min-[550px]:flex-row w-full max-xl:max-w-xl max-xl:mx-auto gap-2">
+                    <span>$</span>
                     <h6 id="delivery"
                         class="font-manrope font-bold text-2xl leading-9 text-black w-full max-w-[176px] text-center">
-                        $15.00 <span class="text-sm text-gray-300 ml-3 lg:hidden whitespace-nowrap">(Delivery
+                        15.00 <span class="text-sm text-gray-300 ml-3 lg:hidden whitespace-nowrap">(Delivery
                             Charge)</span></h6>
                     <div class="flex items-center w-full mx-auto justify-center">
                         <button
@@ -69,9 +74,10 @@
                             </svg>
                         </button>
                     </div>
+                    <span>$</span>
                     <h6 id="total"
                         class="text-indigo-600 font-manrope font-bold text-2xl leading-9 w-full max-w-[176px] text-center">
-                        $120.00
+                        
                     </h6>
                     <p class="hidden productIdDelete">{{this.product._id}}</p>
                     <button class="deleteBtn">
@@ -108,8 +114,13 @@
 </section>
 
 <script>
+    const quantity = document.querySelectorAll("#quantity").value
+    const price = document.querySelectorAll("#price").innerText
+    let total = document.querySelectorAll("#total").value
+    const delivery = document.querySelectorAll("#delivery").innerText
+    
     const deleteBtn = document.querySelectorAll(".deleteBtn")
-    //const productId = document.getElementById("productIdDelete").innerText
+
     deleteBtn.forEach((btn) => {
   
         btn.addEventListener("click", function () {
@@ -138,6 +149,8 @@
         });
     });
 
+total = quantity * price.trim() + Number(delivery)
+console.log(total, quantity, price.trim(), delivery)
 
 
         

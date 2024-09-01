@@ -1,0 +1,123 @@
+{{!-- vista de todos los productos agregados --}}
+<div class="container-lg m-auto mt-24">
+
+    <h1 class="text-3xl text-center font-bold underline">
+        Real Time Products
+    </h1>
+</div>
+
+<div class="flex">
+
+    
+    {{!-- Form Add products--}}
+
+    <div class="pointer bg-white px-8 py-4 rounded-md shadow-md max-w-md w-80% mx-auto">
+        <hr class=" border-1 w-full p-0 mb-4 ">
+        <h2 class="text-2xl font-semibold mb-4">Add Products</h2>
+
+        <form id="form" action="submit" method="POST">
+            <!-- data products -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                    <input required="true" type="text" id="title" name="title"
+                        class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div>
+                    <label for="code" class="block text-sm font-medium text-gray-700">Code</label>
+                    <input required="true" type="text" id="code" name="code" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div>
+                    <label for="stock" class="block text-sm font-medium text-gray-700">Quantity</label>
+                    <input required="true" type="number" id="stock" name="stock"
+                        class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div>
+                    <label for="price" class="block text-sm font-medium text-gray-700">Price $</label>
+                    <input required="true" type="number" id="price" name="price"
+                        class="mt-1 p-2 w-full border rounded-md">
+                </div>
+            </div>
+
+            <!-- category -->
+            <div class="mt-4">
+                <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+                <select required="true" class="mt-1 p-2 w-full border rounded-md" name="category" id="category">
+
+                </select>
+
+            </div>
+            {{!-- image --}}
+            <div class="mt-4">
+                <label for="thumbnails" class="block text-sm font-medium text-gray-700">Image URL</label>
+                <input required="true" type="text" id="thumbnails" name="thumbnails"
+                    class="mt-1 p-2 w-full border rounded-md">
+            </div>
+
+            <!-- Description -->
+            <div class="mt-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <input required="true" type="text" id="description" name="description"
+                    class="mt-1 p-2 w-full border rounded-md">
+            </div>
+
+            <!-- Bouton add products -->
+            <div class="mt-6">
+                <button id="addProduct-btn" type="submit"
+                    class="addProduct-btn w-full mt-6 group relative px-8 py-2 overflow-hidden rounded-md bg-green-500 text-lg font-bold text-white">
+                    Add Products
+                    <div
+                        class="absolute rotate-45 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-[8] group-hover:bg-white/30">
+                    </div>
+                </button>
+
+
+            </div>
+        </form>
+
+        <hr class=" border-1 mt-12 w-full p-0 ">
+        {{!-- Form Delete products--}}
+
+
+        <div class="pointer bg-white  max-w-md w-80% mx-auto mt-4">
+            <h2 class="text-2xl font-semibold mb-4">Delete Products</h2>
+
+            <form id="deleteForm" action="submit" method="POST">
+                <!-- Title -->
+                <div class=" gap-4">
+
+
+                    <select required="true" class="mt-1 p-2 w-full border rounded-md" name="productsDelete"
+                        id="productsDelete">
+
+                    </select>
+
+                </div>
+
+
+                <!-- Bouton Delete Products -->
+                <div class="mt-6">
+                    <button type="submit" onclick="deleteProductByform()" id="deleteProduct-btn"
+                        class=" w-full mt-6 group relative px-8 py-2 overflow-hidden rounded-md bg-red-500 text-lg font-bold text-white">
+                        Delete Products
+                        <div
+                            class="absolute rotate-45 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-[8] group-hover:bg-white/30">
+                        </div>
+                    </button>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="containerReal" class="container-2xl flex flex-wrap justify-center mt-12 w-full"></div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+
+
+<script src="js/main.js"></script>
