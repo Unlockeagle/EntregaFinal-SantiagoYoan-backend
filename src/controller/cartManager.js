@@ -61,7 +61,6 @@ class CartManager {
 
     // Delete Product
     async deleteProductFromCart(cartId, prodId) {
-        console.log(cartId, prodId);
         try {
             const cart = await CartModel.findById(cartId);
 

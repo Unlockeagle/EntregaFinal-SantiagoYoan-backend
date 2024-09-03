@@ -98,4 +98,16 @@
         }
     })
 
+    let filterToPrice = document.getElementById('filterToPrice');
+
+    filterToPrice.addEventListener('change', function () {
+        let selectedPrice = this.value;
+
+        if (selectedPrice === "desc") {
+            window.location.href = '/products?sort=desc';
+        } else if (selectedPrice === "asc") {
+            window.location.href = '/products?sort=asc';
+        }
+    });
+
 </script>
