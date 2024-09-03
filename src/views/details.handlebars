@@ -113,13 +113,16 @@
                     </button>
                 </div>
                 <div class="mt-4">
-                    <label for="quantity">Quantity: </label>
-                    <input class="p-2" name="quantity" placeholder="1" id="quantity" type="number">
-                    <p class="text-white" id="productId">{{plainProductById._id}}</p>
-                    <button id="myButton"
-                        class="flex w-full ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-md">
-                        Add to cart
-                    </button>
+                    <form action="/api/carts/66d0e5df784573eac40391c1/products/{{plainProductById._id}}" method="post">
+                        <label class="title-font font-medium text-2xl text-gray-900" for="quantity">Quantity: </label>
+                        <input
+                            class="border border-gray-200 rounded outline-none text-gray-900 font-semibold text-lg w-full max-w-[118px] min-w-[80px] placeholder:text-gray-900 py-[5px] text-center bg-transparent"
+                            name="quantity" type="number" placeholder="1">{{plainProductById.quantity}}
+                        <button
+                         class="flex w-full ml-auto mt-4 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-md"
+                         type="submit">Add to Cart</button>
+                    </form>
+                   
 
                 </div>
             </div>
@@ -127,30 +130,3 @@
     </div>
 
 </section>
-<script>
-    const addProdBtn = document.getElementById("myButton")
-    const productId = document.getElementById("productId").innerText
-    const quantityInput = document.getElementById("quantity").value
-    console.log(quantityInput)
-    addProdBtn.addEventListener("click", function () {
-        console.log("click");
-
-        fetch(`http://localhost:8080/api/carts/66d0e5df784573eac40391c1/products/${productId}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                quantity: quantityInput
-            }) // Datos que envías al backend
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Success:", data);
-                alert("Added Product")
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    });
-</script>

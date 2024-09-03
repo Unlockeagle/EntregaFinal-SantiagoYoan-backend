@@ -37,7 +37,6 @@ class CartManager {
     }
     // Add product to cart
     async addProductToCart(cartId, prodId, quantity = 1) {
-
         try {
             const cart = await CartModel.findById(cartId);
 
@@ -64,38 +63,29 @@ class CartManager {
     async deleteProductFromCart(cartId, prodId) {
         console.log(cartId, prodId);
         try {
-            // Encuentra el carrito por su ID
             const cart = await CartModel.findById(cartId);
-            console.log("cart: " + cart.products);
-    
+
             if (!cart) {
                 throw new Error("Carrito no encontrado");
             }
-    
-            // Encuentra el índice del producto en el array
+
             const productIndex = cart.products.findIndex((product) => {
                 return product.product._id.toString() === prodId;
             });
-    
-            console.log("index: " + productIndex);
-    
+
             if (productIndex === -1) {
                 throw new Error("Producto no encontrado en el carrito");
             }
-    
-            // Elimina el producto del array `products`
+
             const deletedProduct = cart.products.splice(productIndex, 1);
-    
-            // Guarda los cambios en el carrito
+
             await cart.save();
-    
-            console.log("Deleted Product:", deletedProduct);
+
             return deletedProduct;
         } catch (error) {
             throw new Error("Error al eliminar el producto del carrito: " + error.message);
         }
     }
-    
 }
 
 export default CartManager;

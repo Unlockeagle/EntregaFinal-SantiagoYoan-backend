@@ -41,14 +41,12 @@ router.get("/api/carts/:id", async (req, res) => {
 // Ruta para añadir un producto a un carrito
 router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
     const cartId = req.params.cartId;
-    const prodId = req.params.productId
+    const prodId = req.params.productId;
     const quantity = parseInt(req.body.quantity, 10) || 1;
-    
-    
-    try {
 
-        const addProduct = await manager.addProductToCart(cartId, prodId, quantity)
-        res.status(201).json({message: "Producto agregado", addProduct})
+    try {
+        await manager.addProductToCart(cartId, prodId, quantity);
+        res.redirect("/products");
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -58,7 +56,6 @@ router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
 router.delete("/api/carts/:cartId/products/:productId", async (req, res) => {
     const cartId = req.params.cartId;
     const productId = req.params.productId;
-    console.log(productId)
 
     try {
         const deletedProduct = await manager.deleteProductFromCart(cartId, productId);
