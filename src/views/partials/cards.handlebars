@@ -1,14 +1,20 @@
 <section class="text-gray-600 body-font ">
     <div class="flex justify-end container gap-4 my-12 mx-auto">
-        
 
-        <select class="w-36" name="" id="">
-            {{#each products}}
-            <option value="">{{this.category}}</option>
-            {{/each}}
+        {{!-- Filters --}}
+        <select id="filterToCategory" class="w-36">
+
+            <option value="">Filter Category</option>
+            <option value="Electrónica">Electrónica</option>
+            <option value="Accesorios">Accesorios</option>
+            <option value="Electronicos">Electronicos</option>
+            <option value="filterCategory">All</option>
+
         </select>
-        <select class="w-36" name="" id="">
-            <option value="">price</option>
+        <select id="filterToPrice" class="w-36" name="" id="">
+            <option value="">Filter Price</option>
+            <option value="asc">Highest Price</option>
+            <option value="desc">Lowest Price</option>
         </select>
         <svg width="24px" height="24px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"
             stroke="#fafafa">
@@ -71,3 +77,25 @@
     {{/if}}
 
 </section>
+
+
+<script>
+    let filterCategory = document.getElementById("filterToCategory")
+    filterCategory.addEventListener('change', function () {
+        let selectedCategory = this.value;
+        console.log(selectedCategory)
+
+
+        // Aquí Ruta filtrada o actualizar el contenido según la categoría seleccionada.
+        if (selectedCategory === "Electrónica") {
+            window.location.href = '/products?category=Electrónica';
+        } else if (selectedCategory === "Accesorios") {
+            window.location.href = '/products?category=Accesorios';
+        } else if (selectedCategory === "Electronicos") {
+            window.location.href = '/products?category=Electronicos';
+        } else if (selectedCategory === "filterCategory") {
+            window.location.href = '/products';
+        }
+    })
+
+</script>

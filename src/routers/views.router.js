@@ -87,19 +87,5 @@ router.get("/carts/:id", async (req, res) => {
     }
 });
 
-// Ruta para añadir un producto a un carrito
-// router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
-//     const cartId = req.params.cartId;
-//     const prodId = req.params.productId
-//     const quantity = parseInt(req.body.quantity, 10) || 1;
-      
-//     try {
-//         const addProduct = await manager.addProductToCart(cartId, prodId, quantity)
-//         res.render("details" , {addProduct})
-        
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// });
 
 export default router;
