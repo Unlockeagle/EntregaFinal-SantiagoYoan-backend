@@ -53,7 +53,19 @@
                         Ver detalles</a>
 
                 </div>
+                <div>
+
+                    <form action="/api/carts/66d0e5df784573eac40391c1/products/{{this._id}}" method="post">
+
+                        <button
+                            class="flex w-full ml-auto mt-4 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-md"
+                            type="submit">Add to Cart</button>
+                    </form>
+                </div>
             </div>
+
+
+
 
             {{/each}}
 
