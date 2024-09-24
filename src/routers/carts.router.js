@@ -39,16 +39,32 @@ router.get("/api/carts/:id", async (req, res) => {
 });
 
 // Ruta para añadir un producto a un carrito
-router.post("/api/carts/:cartId/products/:productId", async (req, res) => {
+router.put("/api/carts/:cartId", async (req, res) => {
     const cartId = req.params.cartId;
-    const prodId = req.params.productId;
+    const prodId = req.body.product;
     const quantity = parseInt(req.body.quantity, 10) || 1;
 
     try {
-        await manager.addProductToCart(cartId, prodId, quantity);
-        res.redirect("/products");
+        const addProductToCart = await manager.addProductToCart(cartId, prodId, quantity);
+        res.status(201).send({message: "Producto agregado exitosamente al carrito", addProductToCart})
+       
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+});
+
+// Actualiza la cantidad de los productos en el carrito
+router.put("/api/carts/:cid/products/:pid", async (req, res) => {
+    const cartId = req.params.cid;
+    const prodId = req.params.pid;
+    const quantity = req.body.quantity;
+    console.log(req.body)
+
+    try {
+        const updatedQuantity = await manager.updateQuantity(cartId, prodId, quantity);
+        res.status(201).send({ message: "Cantidad actualizada exitosamente en el carrito desde el servidor", updatedQuantity });
+    } catch (error) {
+        res.status(500).send({ message: "Error al Actualizar cantidad del producto en el carrito desde el servidor", error });
     }
 });
 
@@ -67,5 +83,19 @@ router.delete("/api/carts/:cartId/products/:productId", async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+// elimina todos los productos del carrito
+router.delete("/api/carts/:cid", async (req, res) => {
+    const cartId = req.params.cid
+    try {
+        const emptyCart = await manager.deleteAllProductsToCart(cartId)
+        res.status(201).send({ message: "Todos los productos del carrito han sido eliminado exitosamente en el carrito desde el servidor", emptyCart });
+    } catch (error) {
+        res.status(500).send({ message: "Error al eliminar todos los productos en el carrito desde el servidor", error });
+    }
+})
+
+
+
 
 export default router;
