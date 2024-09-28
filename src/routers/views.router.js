@@ -87,4 +87,18 @@ router.get("/carts/:id", async (req, res) => {
     }
 });
 
+router.get("/realtimeproducts", async (req, res) => {
+    res.render("realtimeproducts");
+});
+
+router.get("/login", async (req, res) => {
+    if (req.session.user) {
+        res.redirect("/profile");
+    }
+    res.render("login");
+});
+router.get("/register", async (req, res) => {
+    res.render("register");
+});
+
 export default router;
