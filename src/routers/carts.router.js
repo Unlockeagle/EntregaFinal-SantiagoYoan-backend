@@ -42,12 +42,12 @@ router.get("/api/carts/:id", async (req, res) => {
 router.put("/api/carts/:cartId", async (req, res) => {
     const cartId = req.params.cartId;
     const prodId = req.body.product;
+    
     const quantity = parseInt(req.body.quantity, 10) || 1;
 
     try {
         const addProductToCart = await manager.addProductToCart(cartId, prodId, quantity);
         res.status(201).send({message: "Producto agregado exitosamente al carrito", addProductToCart})
-       
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

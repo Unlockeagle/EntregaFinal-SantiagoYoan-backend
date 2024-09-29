@@ -92,6 +92,7 @@ router.get("/realtimeproducts", async (req, res) => {
 });
 
 router.get("/login", async (req, res) => {
+
     if (req.session.user) {
         res.redirect("/profile");
     }
