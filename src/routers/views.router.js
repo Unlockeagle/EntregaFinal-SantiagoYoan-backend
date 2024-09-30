@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { json, Router } from "express";
 import ProductManager from "../controller/productManager.js";
 import CartManager from "../controller/cartManager.js";
 
@@ -101,5 +101,14 @@ router.get("/login", async (req, res) => {
 router.get("/register", async (req, res) => {
     res.render("register");
 });
+router.get("/profile", async (req, res) => {
+    console.log(req.session.user);
+    
+    if(!req.session.login){
+        return res.redirect("/login")
+    }
+    res.render("profile", {user: req.session.user});
+});
+
 
 export default router;

@@ -84,9 +84,27 @@ router.get("/current", passport.authenticate("current", { session: false }), asy
 });
 
 router.get("/logout", async (req, res) => {
-   // lipiamos la cooki
-   res.clearCookie("coderCookieToken")
-   res.redirect("/login")
+    // lipiamos la cooki
+    res.clearCookie("coderCookieToken");
+    res.redirect("/login");
+});
+
+/// Login con GoogleAuth
+router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }), 
+// async (req, res) => {
+//     // no lleva nada porque googlo hace la estrategia
+// }
+);
+
+// Google callback
+router.get("/googlecallback", passport.authenticate("google", { failureRedirect: "/login" }),  (req, res) => {
+    if (!req.user) {
+        return res.redirect("/login");
+    }
+    // cargamos el usuario
+    req.session.user = req.user;
+    req.session.login = true;
+    res.redirect("/profile");
 });
 
 export default router;
