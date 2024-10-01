@@ -11,7 +11,7 @@ import initializePassport from "./config/passport.config.js"
 import cookieParser from "cookie-parser";
 import configObject from "./config/config.js"
 
-const { mongoUrl } = configObject;
+const { mongoUrl, secret } = configObject;
 
 import "./db/database.js";
 
@@ -27,7 +27,7 @@ initializePassport()
 app.use(passport.initialize())
 app.use(
     session({
-        secret: "coderhouse",
+        secret: secret,
         resave: true,
         saveUninitialized: true,
         store: MongoStore.create({

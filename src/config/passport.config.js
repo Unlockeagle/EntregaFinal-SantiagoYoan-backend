@@ -5,7 +5,7 @@ import UserModel from "../db/models/user.model.js";
 import configObject from "./config.js";
 
 //
-const { clientId, clientSecret, callbackUrl } = configObject
+const { clientId, clientSecret, callbackUrl, secretOrKey } = configObject
 
 const JWTStrategy = jwt.Strategy;
 const ExtractJwt = jwt.ExtractJwt;
@@ -17,7 +17,7 @@ const initializePassport = () => {
         new JWTStrategy(
             {
                 jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
-                secretOrKey: "coderhouse",
+                secretOrKey: secretOrKey,
             },
             async (jwt_payload, done) => {
                 try {
