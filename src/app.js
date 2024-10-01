@@ -9,6 +9,9 @@ import SessionRouter from "./routers/sessions.router.js";
 import passport from "passport";
 import initializePassport from "./config/passport.config.js"
 import cookieParser from "cookie-parser";
+import configObject from "./config/config.js"
+
+const { mongoUrl } = configObject;
 
 import "./db/database.js";
 
@@ -28,8 +31,7 @@ app.use(
         resave: true,
         saveUninitialized: true,
         store: MongoStore.create({
-            mongoUrl:
-                "mongodb+srv://santiagoyoan:coderhouse@cluster0.zqask.mongodb.net/E-commerce?retryWrites=true&w=majority&appName=Cluster0",
+            mongoUrl: mongoUrl,
             ttl: 100,
         }),
     })
