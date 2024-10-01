@@ -1,7 +1,15 @@
-<h1>Bienvenido {{user}}</h1>
 
-<form action="/api/sessions/logout" method="psot">
-<button type="submit"
+<img src="{{user.imgUrl}}" alt="{{user.first-name}}">
+<h1>Bienvenido {{user.email}}</h1>
+<h1>Bienvenido {{user.first_name}}</h1>
+<h1>Bienvenido {{user.last_name}}</h1>
+<h1>Bienvenido {{user.age}}</h1>
+<h1>Bienvenido {{user.role}}</h1>
+
+<form action="/api/sessions/logout" method="post">
+<button
+type="submit" 
+
     class="inline-flex items-center gap-4 bg-blue-500 px-4 py-2 rounded-md focus:outline-none hover:bg-indigo-600 text-base text-white mt-4 md:mt-0">
     Cerrar sesion</button>
 </form>

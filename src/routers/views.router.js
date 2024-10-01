@@ -6,6 +6,7 @@ const router = Router();
 const manager = new ProductManager();
 const cartManager = new CartManager();
 
+//#region Products
 router.get("/products", async (req, res) => {
     try {
         const categories = req.query.category;
@@ -71,6 +72,7 @@ router.get("/products/details/:id", async (req, res) => {
     }
 });
 
+//#region cart
 //Ruta para obtener un carrito por su ID
 router.get("/carts/:id", async (req, res) => {
     const cartId = req.params.id;
@@ -87,10 +89,12 @@ router.get("/carts/:id", async (req, res) => {
     }
 });
 
+//#region Realtime
 router.get("/realtimeproducts", async (req, res) => {
     res.render("realtimeproducts");
 });
 
+//#region Sessions
 router.get("/login", async (req, res) => {
 
     if (req.session.user) {
@@ -102,7 +106,7 @@ router.get("/register", async (req, res) => {
     res.render("register");
 });
 router.get("/profile", async (req, res) => {
-    console.log(req.session.user);
+
     
     if(!req.session.login){
         return res.redirect("/login")
